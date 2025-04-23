@@ -1,0 +1,21 @@
+POST http://localhost:3000/videos
+Content-Type: application/json
+
+{
+    "title": "video 01",
+    "description": :"like this video 01",
+    "duration": 180
+}
+
+###
+
+GET http://localhost:3000/videos
+
+PUT http://localhost:3000/videos
+Content-Type: application/json
+
+{
+    "title": "video 01",
+    "description": :"like this video 01",
+    "duration": 180
+}

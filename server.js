@@ -8,16 +8,41 @@ import { DatabaseMemory } from './database-memory.js'
 
 const server = fastify()
 
-server.post('/videos', () => {
-    return 'Hello World'
+const database = new DatabaseMemory()
+
+// Request Body
+
+server.post('/videos', (request, reply) => {
+    const { title, description, duration } = request.body 
+
+    database.create({
+        title,
+        description,
+        duration,
+    })
+
+    return reply.status(201).send()
 })
 
 server.get('/videos', () => {
-    return 'Hello Dinihz Server!'
+    const videos = database.list()
+
+    console.log(videos)
+
+    return videos
 })
 
-server.put('/videos/:id', () => {
-    return 'edit'
+server.put('/videos/:id', (request, reply) => {
+    const videoId = request.params.id
+    const { title, description, duration } = request.body
+
+    database.update(videoId, {
+        title,
+        description,
+        duration
+    })
+
+    return reply.status(204).send()
 })
 
 server.delete('/videos/:id', () => {
