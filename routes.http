@@ -2,27 +2,27 @@ POST http://localhost:3000/videos
 Content-Type: application/json
 
 {
-    "title": "video 01",
+    "title": "video node",
     "description": "like this video 01",
     "duration": 180
 }
 
 ###
 
-GET http://localhost:3000/videos
+GET http://localhost:3000/videos?search=node
 # Use o ?search=node apos videos para procurar 
 
 ### 
 
-PUT http://localhost:3000/videos/06a19f0b-1ddc-48ad-9184-1adb810a9c35
+PUT http://localhost:3000/videos/ee25aefc-7caa-4b17-a52f-d1e288fd6fe1
 Content-Type: application/json
 
 {
-    "title": "video 01",
-    "description": "like this video 01",
+    "title": "video node 01",
+    "description": "like this video node 01",
     "duration": 180
 }
 
 ###
 
-DELETE http://localhost:3000/videos/97849983-86c0-46dd-a207-360dc25afb24
+DELETE http://localhost:3000/videos/ee25aefc-7caa-4b17-a52f-d1e288fd6fe1

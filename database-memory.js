@@ -1,39 +1,39 @@
-// UUID: Universal Unique ID
-import { randomUUID } from 'node:crypto'
+import { randomUUID } from "node:crypto";
 
 export class DatabaseMemory {
-    #videos = new Map()
-    
-    list(search) {
-        return Array.from(this.#videos.entries()).map((videoArray) => {
-            const id = videoArray[0]
-            const data = videoArray[1]
+  #videos = new Map();
 
-            return {
-                id,
-                ...data,
-            }
-        })
-        .filter(video => {
-            if (search) {
-                return video.title.includes(search)
-            }
+  list(search) {
+    return Array.from(this.#videos.entries())
+      .map((videoArray) => {
+        const id = videoArray[0];
+        const data = videoArray[1];
 
-            return true
-        })
-    }
+        return {
+          id,
+          ...data,
+        };
+      })
+      .filter((video) => {
+        if (search) {
+          return video.title.includes(search);
+        }
 
-    create(video) {
-        const videoId = randomUUID()
+        return true;
+      });
+  }
 
-       this.#videos.set(videoId, video) 
-    }
+  create(video) {
+    const videoId = randomUUID();
 
-    update(id, video) {
-        this.#videos.set(id, video)
-    }
+    this.#videos.set(videoId, video);
+  }
 
-    delete(id) {
-        this.#videos.delete(id)
-    }
+  update(id, video) {
+    this.#videos.set(id, video);
+  }
+
+  delete(id) {
+    this.#videos.delete(id);
+  }
 }
